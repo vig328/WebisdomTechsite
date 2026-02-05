@@ -231,7 +231,7 @@ export const products = [
     url: "#",
     category: "High-Frequency Pricing",
     status: "Beta Access",
-    image: "https://images.unsplash.com/photo-1526304640158-296940ad3bd3",
+    image: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Hyper-local Event API Ingestion",
       "Geospatial Demand Heatmapping",
@@ -1246,7 +1246,7 @@ export const products = [
     url: "#",
     category: "Agricultural Robotics",
     status: "Prototype Field Testing",
-    image: "https://images.unsplash.com/photo-1625246333195-09d9b63bd71a",
+    image: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=2074&auto=format&fit=crop",
     features: [
       "Real-time Fruit Segmentation (Mask R-CNN)",
       "Soft Pneumatic Grippers",
@@ -1622,7 +1622,7 @@ export const products = [
     url: "https://github.com/hummingbot/hummingbot",
     category: "Quantitative Finance",
     status: "Live Bot",
-    image: "https://images.unsplash.com/photo-1611974765270-ca1258634369",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Triangular & Spatial Arbitrage",
       "Flash Loan Integration (Aave/dYdX)",
@@ -1834,7 +1834,7 @@ export const products = [
     url: "#",
     category: "Inbound Threat Defense",
     status: "Live Service",
-    image: "https://images.unsplash.com/photo-1563206767-5b1d972d9ce3",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Natural Language Understanding (NLU)",
       "Deep Learning OCR for Images",
@@ -2383,7 +2383,7 @@ export const products = [
     url: "https://github.com/microsoft/farmvibes-ai",
     category: "Precision Agriculture",
     status: "Pilot Deployment",
-    image: "https://images.unsplash.com/photo-1625246333195-09d9b63bd71a",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop",
     features: [
       "NDVI/NDRE Health Indexing",
       "Weed vs. Crop Segmentation",
