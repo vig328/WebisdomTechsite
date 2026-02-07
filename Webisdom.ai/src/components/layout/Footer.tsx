@@ -1,12 +1,14 @@
+"use client";
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    /* Changed bg-primary to transparent + backdrop-blur to blend with your background */
-    <footer className="bg-transparent text-white border-t border-white/10 backdrop-blur-md relative z-10">
+    /* Lighter, translucent slate background with a high blur for a modern look */
+    <footer className="w-full bg-slate-800/40 text-white border-t border-white/10 backdrop-blur-xl relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
@@ -72,40 +74,24 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-white">Featured Solutions</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/products/ai-chieftain" className="text-white/60 hover:text-primary transition-colors">
-                  AI Chieftain
-                </Link>
-              </li>
-              <li>
-                <Link to="/products/ai-pms" className="text-white/60 hover:text-primary transition-colors">
-                  AI PMS
-                </Link>
-              </li>
-              <li>
-                <Link to="/products/restaurant-agent" className="text-white/60 hover:text-primary transition-colors">
-                  Restaurant AI Agent
-                </Link>
-              </li>
-              <li>
-                <Link to="/services?section=ai-audit" className="text-white/60 hover:text-primary transition-colors">
-                  AI Audit Service
-                </Link>
-              </li>
-              <li>
-                <Link to="/products/loan-agent" className="text-white/60 hover:text-primary transition-colors">
-                  Loan Processing AI
-                </Link>
-              </li>
-              <li>
-                <Link to="/products/voice-xperience" className="text-white/60 hover:text-primary transition-colors">
-                  Voice-Xperience
-                </Link>
-              </li>
+              {[
+                { name: "AI Chieftain", path: "/products/ai-chieftain" },
+                { name: "AI PMS", path: "/products/ai-pms" },
+                { name: "Restaurant AI Agent", path: "/products/restaurant-agent" },
+                { name: "AI Audit Service", path: "/services?section=ai-audit" },
+                { name: "Loan Processing AI", path: "/products/loan-agent" },
+                { name: "Voice-Xperience", path: "/products/voice-xperience" }
+              ].map((solution) => (
+                <li key={solution.name}>
+                  <Link to={solution.path} className="text-white/60 hover:text-primary transition-colors">
+                    {solution.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Industries We Serve & Contact (Restored Fully) */}
+          {/* Industries We Serve & Contact */}
           <div>
             <h3 className="font-semibold mb-4 text-white">Industries We Serve</h3>
             <ul className="space-y-2 text-sm mb-6">
