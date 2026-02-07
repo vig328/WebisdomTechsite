@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react"; // Added useRef
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom"; // Added useSearchParams
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
@@ -31,10 +31,22 @@ const industryConfig = [
 
 const Industries = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); // Hook to read URL params
+  const sectionId = searchParams.get("section"); // Get the 'section' value
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // If there is a section in the URL, scroll to the grid and highlight
+    if (sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Smooth scroll to the specific card
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [sectionId]);
 
   const handleCardClick = (id: string) => {
     navigate(`/industry/${id}`);
@@ -81,31 +93,43 @@ const Industries = () => {
         </section>
 
         {/* INDUSTRY GRID */}
-        <section className="py-24 container mx-auto px-4 relative z-10 -mt-20">
+        <section ref={gridRef} className="py-24 container mx-auto px-4 relative z-10 -mt-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industryConfig.map((ind) => {
               const Icon = ind.icon;
+              // Check if this card is the one selected in the URL
+              const isSelected = sectionId === ind.id;
+
               return (
-                <Card 
-                  key={ind.id} 
-                  onClick={() => handleCardClick(ind.id)}
-                  className="group cursor-pointer bg-white border-slate-300/50 shadow-md hover:shadow-2xl hover:border-blue-500 transition-all duration-500"
+                <motion.div
+                  key={ind.id}
+                  id={ind.id} // Added ID here so scrollIntoView works
+                  initial={false}
+                  animate={isSelected ? { scale: [1, 1.05, 1], borderColor: "#3b82f6" } : {}}
+                  transition={{ duration: 0.5, repeat: isSelected ? 1 : 0 }}
                 >
-                  <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                    <div className={`p-4 rounded-xl ${ind.bg} transition-all duration-500 group-hover:scale-110 shadow-inner`}>
-                      <Icon className={`w-7 h-7 ${ind.color}`} />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
-                      {ind.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-600 mb-6 text-sm leading-relaxed">{ind.desc}</p>
-                    <div className="flex items-center text-xs font-bold uppercase tracking-widest text-blue-600">
-                      View Architecture <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card 
+                    onClick={() => handleCardClick(ind.id)}
+                    className={`group cursor-pointer bg-white transition-all duration-500 h-full
+                      ${isSelected ? 'ring-2 ring-blue-500 border-blue-500 shadow-2xl' : 'border-slate-300/50 shadow-md'}
+                      hover:shadow-2xl hover:border-blue-500`}
+                  >
+                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                      <div className={`p-4 rounded-xl ${ind.bg} transition-all duration-500 group-hover:scale-110 shadow-inner`}>
+                        <Icon className={`w-7 h-7 ${ind.color}`} />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                        {ind.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-slate-600 mb-6 text-sm leading-relaxed">{ind.desc}</p>
+                      <div className="flex items-center text-xs font-bold uppercase tracking-widest text-blue-600">
+                        View Architecture <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               );
             })}
           </div>
