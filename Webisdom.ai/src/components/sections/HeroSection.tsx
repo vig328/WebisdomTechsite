@@ -60,8 +60,8 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-muted-foreground/80 mb-8 max-w-2xl mx-auto animate-slide-in-right">
+          {/* Subheadline - Changed to absolute white */}
+          <p className="text-xl sm:text-2xl text-white mb-8 max-w-2xl mx-auto animate-slide-in-right font-light">
             Domain-specific AI products and services across Hospitality, Fintech, and Healthcare
           </p>
 
@@ -76,12 +76,12 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Domain Pills */}
+          {/* Domain Pills - Changed text and border to absolute white variations */}
           <div className="flex flex-wrap justify-center gap-4 mb-16 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             {["Hospitality", "Fintech", "Healthcare"].map((domain, index) => (
               <div 
                 key={domain}
-                className="px-6 py-3 bg-card/30 backdrop-blur-md border border-border/50 rounded-full text-sm font-medium hover:bg-card/60 transition-all duration-300 hover:scale-105 cursor-default"
+                className="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/30 rounded-full text-sm font-semibold text-white hover:bg-white/20 transition-all duration-300 hover:scale-105 cursor-default shadow-lg"
                 style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
                 {domain}
@@ -93,8 +93,8 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <div className="w-6 h-10 border-2 border-muted-foreground/20 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground/40 rounded-full mt-2 animate-pulse" />
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/40 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
 
