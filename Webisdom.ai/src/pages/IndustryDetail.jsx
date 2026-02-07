@@ -63,9 +63,11 @@ const IndustryDetail = () => {
                  </Badge>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight uppercase italic">
+              {/* Updated Heading: Removed 'italic', changed to 'font-black' and increased size for product-style impact */}
+              <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter leading-none uppercase">
                 {data.title}
               </h1>
+
               <p className="text-xl md:text-2xl text-blue-200 mb-6 font-light italic">
                 {data.subtitle}
               </p>
